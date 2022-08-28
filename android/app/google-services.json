@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "396226793691",
+    "project_id": "realestatehec",
+    "storage_bucket": "realestatehec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396226793691:android:f84fc58c9a919545aefcfe",
+        "android_client_info": {
+          "package_name": "com.hecrealestate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396226793691-1cecortkf9prsopj11bcj4145rmintnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa1sD7_Lh_Y6sviQdpU7edaV8g4TOKe0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396226793691-1cecortkf9prsopj11bcj4145rmintnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396226793691:android:f36200a725b5e3e2aefcfe",
+        "android_client_info": {
+          "package_name": "com.realestate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396226793691-1cecortkf9prsopj11bcj4145rmintnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa1sD7_Lh_Y6sviQdpU7edaV8g4TOKe0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396226793691-1cecortkf9prsopj11bcj4145rmintnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
