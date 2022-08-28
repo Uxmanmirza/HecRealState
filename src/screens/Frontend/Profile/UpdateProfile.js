@@ -21,6 +21,7 @@ export default function Register({navigation}) {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
+   
 
   const {user} = useAuthContext();
   const [image, setImage] = useState({});
@@ -50,15 +51,17 @@ export default function Register({navigation}) {
     address: address,
     phonenumber: phonenumber,
   };
+
   const SaveProfile = async () => {
     if (image.uri) {
       await storage()
+      .ref(`images/${image.fileName}`)
+      .putFile(image.uri)
+      .then(async () => {
+        const url = await storage()
         .ref(`images/${image.fileName}`)
-        .putFile(image.uri)
-        .then(async () => {
-          const url = await storage()
-            .ref(`images/${image.fileName}`)
-            .getDownloadURL();
+        .getDownloadURL();
+        setIsProcessing(true)
           firestore()
             .collection('users')
             .doc(user.uid)
@@ -67,7 +70,8 @@ export default function Register({navigation}) {
               console.log('User profile updated!');
               navigation.navigate("Profile")
             });
-        });
+            
+          });
       console.log('Profile Updated');
     } else {
       firestore()
@@ -78,6 +82,7 @@ export default function Register({navigation}) {
           console.log('User updated!');
           navigation.navigate("Profile")
         });
+        
     }
   };
 
@@ -119,7 +124,7 @@ export default function Register({navigation}) {
           )}
         </TouchableOpacity>
 
-        <Input
+        {/* <Input
           marginLeft={50}
           marginTop={30}
           value={name}
@@ -138,7 +143,7 @@ export default function Register({navigation}) {
           maxWidth="300px"
           variant="underlined"
           type="text"
-        />
+        /> */}
 
         <Input
           marginLeft={50}
@@ -183,6 +188,7 @@ export default function Register({navigation}) {
 
         <Button
           onPress={SaveProfile}
+         
           
           size="lg"
           variant="subtle"

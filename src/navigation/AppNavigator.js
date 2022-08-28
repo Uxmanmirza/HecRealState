@@ -12,13 +12,13 @@ import Post from '../screens/Frontend/Post';
 import Profile from '../screens/Frontend/Profile/Profile';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Save from '../screens/Frontend/Home/Save';
 import UpdateProfile from '../screens/Frontend/Profile/UpdateProfile';
 import About from '../screens/Frontend/Home/About';
+import { Spinner } from 'native-base';
 export default function AppNavigator() {
   const Stack = createNativeStackNavigator();
   const Tabs = createBottomTabNavigator();
-  const {isAuthenticated} = useAuthContext();
+  const {isAuthenticated , isProcessing} = useAuthContext();
 
   const HomeData = () => {
     return (
@@ -29,6 +29,7 @@ export default function AppNavigator() {
             component={Home}
             options={{headerShown: false}}
           />
+
           <Stack.Screen name="About" component={About} />
         </Stack.Group>
       </Stack.Navigator>
@@ -60,7 +61,9 @@ export default function AppNavigator() {
         />
       </Stack.Navigator>
     );
+
   };
+  if (isProcessing) return <Spinner/>
   return (
     <NavigationContainer>
       {!isAuthenticated ? (
@@ -75,7 +78,7 @@ export default function AppNavigator() {
         <Tabs.Navigator
           screenOptions={{
             tabBarActiveBackgroundColor: '#E7C8DD',
-            tabBarActiveTintColor : "#264653"
+            tabBarActiveTintColor: '#264653',
           }}>
           <Tabs.Screen
             name="Home "
@@ -102,7 +105,7 @@ export default function AppNavigator() {
             name="ProfileData"
             component={ProfileData}
             options={{
-              headerShown : false,
+              headerShown: false,
               tabBarIcon: ({color, size}) => (
                 <FontAwesome5Icon name="users" color={color} size={size} />
               ),

@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
- 
   ScrollView,
   TouchableOpacity,
   Image,
   StyleSheet,
   Dimensions,
   FlatList,
+  Alert,
 } from 'react-native';
 const {width} = Dimensions.get('window');
 import {COLOURS} from '../../../components/db';
@@ -44,32 +44,36 @@ const Home = ({navigation}) => {
                 uri: item.url || 'https://source.unsplash.com/200x150/?fashion',
               }}
             />
-
-            <Text
-              style={{
-                marginLeft: 0,
-              }}>
-              {item.title}
-            </Text>
-            <Text
-              style={{
-                marginLeft: 2,
-              }}>
-              {`${item.price}$`}
-            </Text>
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Detail', {item})}>
-              <Entypo
-                name="bookmark"
+            <View>
+              <Text
                 style={{
-                  fontSize: 30,
-                  color: COLOURS.backgroundDark,
-                  borderRadius: 10,
-                  marginLeft: 130,
-                }}
-              />
-            </TouchableOpacity>
+                  marginLeft: 0,
+                }}>
+                {item.title}
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 2,
+                }}>
+                {`${item.price}$`}
+              </Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  alert('Your feed has been save');
+                }}>
+                <Entypo
+                  name="bookmark"
+                  style={{
+                    fontSize: 30,
+                    color: COLOURS.backgroundDark,
+                    borderRadius: 10,
+                    marginLeft: 130,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -93,7 +97,6 @@ const Home = ({navigation}) => {
             padding: 16,
           }}>
           <HeaderTabs />
-         
         </View>
         <View
           style={{
@@ -149,14 +152,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'gray',
     padding: 10,
-   
   },
   card: {
     width: width * 0.503,
     height: 100,
     marginBottom: 100,
     borderRadius: 15,
-    
   },
   subCard: {
     height: 400,
